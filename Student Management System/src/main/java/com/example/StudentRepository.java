@@ -103,13 +103,22 @@ class StudentRepository {
         // Input Student ID
         while (true) {
             System.out.print("\nEnter Student ID to remove: ");
+            String input = inputScanner.nextLine().trim();
+
+            if (input.isEmpty()) {
+                System.out.println("\nStudent ID cannot be empty. Please try again.");
+                continue;
+            }
+
             try {
-                studentId = inputScanner.nextInt();
-                inputScanner.nextLine(); // Consume newline
+                studentId = Integer.parseInt(input);
+                if (studentId <= 0) {
+                    System.out.println("\nStudent ID must be a positive number. Please try again.");
+                    continue;
+                }
                 break;
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("\nInvalid input. Please enter a valid numeric Student ID.");
-                inputScanner.nextLine(); // Clear invalid input
             }
         }
 
@@ -125,6 +134,7 @@ class StudentRepository {
         // If the student is not found, display an error message
         System.out.println("\nError: Student with ID " + studentId + " not found.");
     }
+
 
     // Displays all students in the repository
     void displayAllStudents() {
@@ -154,13 +164,22 @@ class StudentRepository {
         // Input Student ID
         while (true) {
             System.out.print("\nPlease enter the Student ID you want to search for: ");
+            String input = inputScanner.nextLine().trim();
+
+            if (input.isEmpty()) {
+                System.out.println("\nStudent ID cannot be empty. Please try again.");
+                continue;
+            }
+
             try {
-                studentId = inputScanner.nextInt();
-                inputScanner.nextLine(); // Consume newline
+                studentId = Integer.parseInt(input);
+                if (studentId <= 0) {
+                    System.out.println("\nStudent ID must be a positive number. Please try again.");
+                    continue;
+                }
                 break;
-            } catch (InputMismatchException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("\nInvalid input. Please enter a valid numeric Student ID.");
-                inputScanner.nextLine(); // Clear invalid input
             }
         }
 
