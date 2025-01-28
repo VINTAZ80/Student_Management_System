@@ -10,17 +10,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit tests for the StudentRepository class.
+ */
 class StudentRepositoryTest {
 
     private ArrayList<Student> studentList;
     private StudentRepository repository;
 
+    /**
+     * Sets up the test environment before each test.
+     * 
+     * Initializes an empty list of students and creates a new instance
+     * of the StudentRepository with the list.
+     */
     @BeforeEach
     void setUp() {
         studentList = new ArrayList<>();
         repository = new StudentRepository(studentList);
     }
 
+    /**
+     * Tests the addition of a new student with valid inputs.
+     * 
+     * Verifies that the student is successfully added to the list 
+     * with the correct details.
+     */
     @Test
     void testAddNewStudent_Success() {
         Scanner mockScanner = mock(Scanner.class);
@@ -35,6 +50,12 @@ class StudentRepositoryTest {
         assertEquals(20, studentList.get(0).getStudentAge());
     }
 
+    /**
+     * Tests the addition of a new student with a duplicate ID.
+     * 
+     * Verifies that the student is not added to the list when the 
+     * provided ID already exists in the list.
+     */
     @Test
     void testAddNewStudent_DuplicateId() {
         studentList.add(new Student(101, "Ali", 20));
@@ -48,6 +69,12 @@ class StudentRepositoryTest {
         assertEquals(1, studentList.size());
     }
 
+    /**
+     * Tests the display of all students when the list is non-empty.
+     * 
+     * Verifies that the list is printed correctly and its size 
+     * remains unchanged.
+     */
     @Test
     void testDisplayAllStudents_NonEmpty() {
         studentList.add(new Student(101, "Ali", 20));
@@ -58,6 +85,11 @@ class StudentRepositoryTest {
         assertEquals(1, studentList.size());
     }
 
+    /**
+     * Tests the search functionality for a student by ID when the student is found.
+     * 
+     * Verifies that the method executes properly and displays the correct details.
+     */
     @Test
     void testSearchStudentById_Found() {
         studentList.add(new Student(101, "Ali", 20));
@@ -68,6 +100,11 @@ class StudentRepositoryTest {
         repository.searchStudentById(mockScanner);
     }
 
+    /**
+     * Tests the search functionality for a student by ID when the student is not found.
+     * 
+     * Verifies that the method executes properly without modifying the list.
+     */
     @Test
     void testSearchStudentById_NotFound() {
         Scanner mockScanner = mock(Scanner.class);
@@ -79,6 +116,11 @@ class StudentRepositoryTest {
         assertTrue(studentList.isEmpty());
     }
 
+    /**
+     * Tests the removal of a student by ID when the student exists in the list.
+     * 
+     * Verifies that the student is successfully removed and the list becomes empty.
+     */
     @Test
     void testRemoveStudentById_Success() {
         studentList.add(new Student(101, "Ali", 20));
@@ -91,6 +133,11 @@ class StudentRepositoryTest {
         assertTrue(studentList.isEmpty());
     }
 
+    /**
+     * Tests the removal of a student by ID when the student does not exist in the list.
+     * 
+     * Verifies that the list remains unchanged when no matching student is found.
+     */
     @Test
     void testRemoveStudentById_NotFound() {
         Scanner mockScanner = mock(Scanner.class);
@@ -101,6 +148,11 @@ class StudentRepositoryTest {
         assertTrue(studentList.isEmpty());
     }
 
+    /**
+     * Tests the display of all students when the list is empty.
+     * 
+     * Verifies that the method executes properly without modifying the list.
+     */
     @Test
     void testDisplayAllStudents_Empty() {
         repository.displayAllStudents();

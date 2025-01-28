@@ -1,20 +1,47 @@
+/**
+ * @file StudentRepository.java
+ * @brief Repository class for managing student operations.
+ * 
+ * This class provides methods to perform various operations on a list of students, 
+ * including adding, removing, displaying, and searching for students.
+ */
+
 package com.example;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Repository class for managing student operations
+/**
+ * @class StudentRepository
+ * @brief Provides methods for managing students.
+ * 
+ * This class allows adding new students, removing existing ones, displaying all students, 
+ * and searching for a student by their ID.
+ */
 class StudentRepository {
 
-    // List to hold student objects
+    /**
+     * @brief List to hold student objects.
+     */
     private final ArrayList<Student> studentList;
 
-    // Constructor to initialize the repository with the student list
+    /**
+     * @brief Constructor to initialize the repository with the student list.
+     * 
+     * @param studentList The list of students to manage.
+     */
     public StudentRepository(ArrayList<Student> studentList) {
         this.studentList = studentList;
     }
 
-    // Adds a new student to the repository
+    /**
+     * @brief Adds a new student to the repository.
+     * 
+     * Prompts the user to input the student's ID, name, and age, and adds the student 
+     * to the list if the input is valid and no student with the same ID exists.
+     * 
+     * @param inputScanner The Scanner object for reading user input.
+     */
     void addNewStudent(Scanner inputScanner) {
         int studentId = 0;
         String studentName = "";
@@ -95,7 +122,14 @@ class StudentRepository {
     }
 
 
-    // Removes a student from the repository based on their ID
+    /**
+     * @brief Removes a student from the repository based on their ID.
+     * 
+     * Prompts the user to input the ID of the student to be removed and removes 
+     * the student if they exist in the list.
+     * 
+     * @param inputScanner The Scanner object for reading user input.
+     */
     void removeStudentById(Scanner inputScanner) {
         int studentId = 0;
 
@@ -135,7 +169,12 @@ class StudentRepository {
     }
 
 
-    // Displays all students in the repository
+    /**
+     * @brief Displays all students in the repository.
+     * 
+     * Prints the list of students along with their details. If no students exist, 
+     * a message indicating the absence of students is displayed.
+     */
     void displayAllStudents() {
         if (studentList.isEmpty()) { // Check if the list is empty
             System.out.println("\nNo students found.");
@@ -156,7 +195,14 @@ class StudentRepository {
         }
     }
 
-    // Searches for a student by their ID
+    /**
+     * @brief Searches for a student by their ID.
+     * 
+     * Prompts the user to input the ID of the student to be searched. If the student 
+     * exists, their details are displayed; otherwise, an appropriate message is shown.
+     * 
+     * @param inputScanner The Scanner object for reading user input.
+     */
     void searchStudentById(Scanner inputScanner) {
         int studentId = 0;
 
